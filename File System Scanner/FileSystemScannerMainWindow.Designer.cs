@@ -76,6 +76,7 @@
             this.simpleHashRadioButton.TabStop = true;
             this.simpleHashRadioButton.Text = "Simple file hash";
             this.simpleHashRadioButton.UseVisualStyleBackColor = true;
+            this.simpleHashRadioButton.CheckedChanged += new System.EventHandler(this.hashMethodChanged);
             // 
             // lazyHashRadioButton
             // 
@@ -86,6 +87,7 @@
             this.lazyHashRadioButton.TabIndex = 4;
             this.lazyHashRadioButton.Text = "Lazy file hash";
             this.lazyHashRadioButton.UseVisualStyleBackColor = true;
+            this.lazyHashRadioButton.CheckedChanged += new System.EventHandler(this.hashMethodChanged);
             // 
             // fullHashRadioButton
             // 
@@ -96,6 +98,7 @@
             this.fullHashRadioButton.TabIndex = 5;
             this.fullHashRadioButton.Text = "Full file hash";
             this.fullHashRadioButton.UseVisualStyleBackColor = true;
+            this.fullHashRadioButton.CheckedChanged += new System.EventHandler(this.hashMethodChanged);
             // 
             // startButton
             // 

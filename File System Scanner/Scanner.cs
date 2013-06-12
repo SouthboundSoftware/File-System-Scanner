@@ -18,18 +18,35 @@ namespace Southbound.FileSystemScanner
             this.items = new List<FileInformationItem>();
         }
 
+        public void Start()
+        {
+            this.Scan(this.root);
+        }
+
+        public IList<FileInformationItem> getFileInformationItems()
+        {
+            return this.items;
+        }
+
         private void Scan(DirectoryInfo root)
         {
-            foreach (FileInfo file in root.GetFiles())
+            try
             {
-                FileInformationItem item = new FileInformationItem(file);
-                item.Hash = HashFunctions.CalculateHash(item, this.hashMethod);
-                this.items.Add(item);
-            }
+                foreach (FileInfo file in root.GetFiles())
+                {
+                    FileInformationItem item = new FileInformationItem(file);
+                    item.Hash = HashFunctions.CalculateHash(item, this.hashMethod);
+                    this.items.Add(item);
+                }
 
-            foreach (DirectoryInfo newRoot in root.GetDirectories())
+                foreach (DirectoryInfo newRoot in root.GetDirectories())
+                {
+                    Scan(newRoot);
+                }
+            }
+            catch (Exception ex)
             {
-                Scan(newRoot);
+                Console.WriteLine(ex.ToString());
             }
         }
 

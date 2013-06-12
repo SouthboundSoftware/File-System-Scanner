@@ -93,7 +93,7 @@ namespace Southbound.FileSystemScanner
     }
 
 
-    enum HashMethod
+    public enum HashMethod
     {
         Simple,
         Lazy,
