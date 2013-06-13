@@ -43,5 +43,15 @@ namespace Southbound.FileSystemScanner
         public DateTime LastOpen { get { return this.lastOpenTime; } }
         public bool Hidden { get { return this.hidden; } }
         public bool ReadOnly { get { return this.readOnly; } }
+
+        public static void Save(string file, FileInformationItem[] items)
+        {
+
+        }
+
+        private static void EscapeField(string fieldValue)
+        {
+            
+        }
     }
 }

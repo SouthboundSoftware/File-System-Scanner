@@ -10,18 +10,24 @@ namespace Southbound.FileSystemScanner
         private HashMethod hashMethod;
         private DirectoryInfo root;
         private List<FileInformationItem> items;
+        private bool running;
 
         public Scanner(string rootPath, HashMethod hashMethod)
         {
             this.root = new DirectoryInfo(rootPath);
             this.hashMethod = hashMethod;
             this.items = new List<FileInformationItem>();
+            this.running = false;
         }
 
         public void Start()
         {
+            this.running = true;
             this.Scan(this.root);
+            this.running = false;
         }
+
+        public bool IsRunning { get { return this.running; } }
 
         public IList<FileInformationItem> getFileInformationItems()
         {
@@ -46,7 +52,7 @@ namespace Southbound.FileSystemScanner
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                //Console.WriteLine(ex.ToString());
             }
         }
 
