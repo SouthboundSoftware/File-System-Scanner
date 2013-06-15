@@ -49,7 +49,7 @@ namespace Southbound.FileSystemScanner
         {
             if (this.saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-
+                FileInformationItem.Save(this.saveFileDialog.FileName, this.scanner.getFileInformationItems());
             }
         }
     }

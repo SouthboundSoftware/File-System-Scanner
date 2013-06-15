@@ -50,10 +50,7 @@ namespace Southbound.FileSystemScanner
                     Scan(newRoot);
                 }
             }
-            catch (Exception ex)
-            {
-                //Console.WriteLine(ex.ToString());
-            }
+            catch (Exception) { }
         }
 
         public HashMethod HashMethod { get { return this.hashMethod; } }

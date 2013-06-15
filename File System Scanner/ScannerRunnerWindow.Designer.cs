@@ -53,8 +53,8 @@
             // 
             // saveFileDialog
             // 
-            this.saveFileDialog.CheckFileExists = true;
             this.saveFileDialog.DefaultExt = "csv";
+            this.saveFileDialog.Filter = "CSV File|*.csv";
             // 
             // statusLabel
             // 
