@@ -36,21 +36,40 @@ namespace Southbound.FileSystemScanner
 
         private void Scan(DirectoryInfo root)
         {
+            FileInfo[] files = null;
             try
             {
-                foreach (FileInfo file in root.GetFiles())
+                files = root.GetFiles("*");
+            }
+            catch (UnauthorizedAccessException)
+            {
+                files = new FileInfo[0];
+            }
+
+            foreach (FileInfo file in files)
+            {
+                if ((file.Attributes & FileAttributes.ReparsePoint) != FileAttributes.ReparsePoint && (file.Attributes & FileAttributes.System) != FileAttributes.System)
                 {
                     FileInformationItem item = new FileInformationItem(file);
                     item.Hash = HashFunctions.CalculateHash(item, this.hashMethod);
                     this.items.Add(item);
                 }
-
-                foreach (DirectoryInfo newRoot in root.GetDirectories())
-                {
-                    Scan(newRoot);
-                }
             }
-            catch (Exception) { }
+
+            DirectoryInfo[] directories = null;
+            try
+            {
+                directories = root.GetDirectories();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                directories = new DirectoryInfo[0];
+            }
+
+            foreach (DirectoryInfo newRoot in directories)
+            {
+                Scan(newRoot);
+            }
         }
 
         public HashMethod HashMethod { get { return this.hashMethod; } }

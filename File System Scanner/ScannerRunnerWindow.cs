@@ -34,7 +34,7 @@ namespace Southbound.FileSystemScanner
             if (this.scanner.IsRunning)
             {
                 this.progressBar.Update();
-                this.statusLabel.Text = "Running";
+                this.statusLabel.Text = string.Format("Running, found {0} files...", this.scanner.getFileInformationItems().Count);
             }
             else
             {
@@ -42,6 +42,11 @@ namespace Southbound.FileSystemScanner
                 this.interfaceUpdateTimer.Stop();
                 this.progressBar.Style = ProgressBarStyle.Blocks;
                 this.saveButton.Enabled = true;
+
+                int fileCount = this.scanner.getFileInformationItems().Count;
+                MessageBox.Show(string.Format("Scanned {0} file{1}", fileCount, (fileCount > 1 ? "s" : "")), "Done", MessageBoxButtons.OK);
+
+                this.saveButton_Click(sender, e);
             }
         }
 

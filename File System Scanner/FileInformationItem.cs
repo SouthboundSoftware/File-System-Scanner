@@ -47,6 +47,7 @@ namespace Southbound.FileSystemScanner
 
         public static void Save(string file, IList<FileInformationItem> items)
         {
+            if (File.Exists(file)) File.Delete(file);
             StreamWriter writer = new StreamWriter(new FileStream(file, FileMode.CreateNew));
             writer.WriteLine(CreateHeaderLine());
             for (int i = 0; i < items.Count; i++)

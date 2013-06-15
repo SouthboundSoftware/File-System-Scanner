@@ -35,13 +35,24 @@ namespace Southbound.FileSystemScanner
 
         private static string CalculateLazyHash(FileInformationItem file)
         {
-            byte[] buffer = new byte[1024 * 8];
-
-            using (FileStream fs = new FileStream(file.FullPath, FileMode.Open))
+            try
             {
-                int read = fs.Read(buffer, 0, buffer.Length);
+                byte[] buffer = new byte[1024 * 8];
 
-                return CalculateHash(buffer, 0, read);
+                using (FileStream fs = new FileStream(file.FullPath, FileMode.Open))
+                {
+                    int read = fs.Read(buffer, 0, buffer.Length);
+
+                    return CalculateHash(buffer, 0, read);
+                }
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return CalculateSimpleHash(file);
+            }
+            catch (IOException)
+            {
+                return CalculateSimpleHash(file);
             }
         }
 
