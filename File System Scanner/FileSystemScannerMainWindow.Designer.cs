@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.selectRootButton = new System.Windows.Forms.Button();
             this.rootLabel = new System.Windows.Forms.Label();
             this.selectedRootTextBox = new System.Windows.Forms.TextBox();
@@ -36,6 +37,9 @@
             this.lazyHashRadioButton = new System.Windows.Forms.RadioButton();
             this.fullHashRadioButton = new System.Windows.Forms.RadioButton();
             this.startButton = new System.Windows.Forms.Button();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // selectRootButton
@@ -111,11 +115,29 @@
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
+            // progressBar
+            // 
+            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar.Location = new System.Drawing.Point(13, 162);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(467, 23);
+            this.progressBar.TabIndex = 7;
+            // 
+            // timer
+            // 
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.Filter = "CSV file|*.csv";
+            // 
             // FileSystemScannerMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 171);
+            this.ClientSize = new System.Drawing.Size(492, 197);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.fullHashRadioButton);
             this.Controls.Add(this.lazyHashRadioButton);
@@ -142,6 +164,9 @@
         private System.Windows.Forms.RadioButton lazyHashRadioButton;
         private System.Windows.Forms.RadioButton fullHashRadioButton;
         private System.Windows.Forms.Button startButton;
+        private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }
 
