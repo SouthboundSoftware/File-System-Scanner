@@ -125,6 +125,7 @@
             this.Controls.Add(this.selectRootButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FileSystemScannerMainWindow";
+            this.ShowIcon = false;
             this.Text = "Southbound File System Scanner";
             this.ResumeLayout(false);
             this.PerformLayout();

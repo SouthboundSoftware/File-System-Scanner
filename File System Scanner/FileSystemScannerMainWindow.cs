@@ -35,7 +35,7 @@ namespace Southbound.FileSystemScanner
                 runnerWindow.RunScan(this.selectedRootTextBox.Text, this.selectedHash);
             }
 
-            this.Close();
+            this.Show();
         }
 
         private void hashMethodChanged(object sender, EventArgs e)

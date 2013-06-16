@@ -33,7 +33,6 @@
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.statusLabel = new System.Windows.Forms.Label();
-            this.saveButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // interfaceUpdateTimer
@@ -65,31 +64,18 @@
             this.statusLabel.TabIndex = 1;
             this.statusLabel.Text = "Running";
             // 
-            // saveButton
-            // 
-            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveButton.Enabled = false;
-            this.saveButton.Location = new System.Drawing.Point(366, 42);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(75, 23);
-            this.saveButton.TabIndex = 2;
-            this.saveButton.Text = "Save";
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
-            // 
             // ScannerRunnerWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(454, 73);
-            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.progressBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ScannerRunnerWindow";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ScannerRunnerWindow";
+            this.Text = "Running scan...";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -101,6 +87,5 @@
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.Label statusLabel;
-        private System.Windows.Forms.Button saveButton;
     }
 }

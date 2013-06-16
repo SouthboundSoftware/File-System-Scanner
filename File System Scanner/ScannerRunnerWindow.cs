@@ -41,21 +41,22 @@ namespace Southbound.FileSystemScanner
                 this.statusLabel.Text = "Done";
                 this.interfaceUpdateTimer.Stop();
                 this.progressBar.Style = ProgressBarStyle.Blocks;
-                this.saveButton.Enabled = true;
 
                 int fileCount = this.scanner.getFileInformationItems().Count;
                 MessageBox.Show(string.Format("Scanned {0} file{1}", fileCount, (fileCount > 1 ? "s" : "")), "Done", MessageBoxButtons.OK);
 
-                this.saveButton_Click(sender, e);
+                this.saveResult();
             }
         }
 
-        private void saveButton_Click(object sender, EventArgs e)
+        private void saveResult()
         {
             if (this.saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 FileInformationItem.Save(this.saveFileDialog.FileName, this.scanner.getFileInformationItems());
             }
+
+            this.Close();
         }
     }
 }
