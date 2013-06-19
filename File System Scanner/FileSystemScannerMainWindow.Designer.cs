@@ -119,10 +119,11 @@
             // 
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(13, 162);
+            this.progressBar.Location = new System.Drawing.Point(13, 235);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(467, 23);
             this.progressBar.TabIndex = 7;
+            this.progressBar.Tag = "";
             // 
             // timer
             // 
@@ -136,7 +137,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 197);
+            this.ClientSize = new System.Drawing.Size(492, 270);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.fullHashRadioButton);

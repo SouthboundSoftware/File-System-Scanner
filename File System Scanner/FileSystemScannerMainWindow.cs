@@ -34,6 +34,9 @@ namespace Southbound.FileSystemScanner
             this.scanner = new Scanner(this.selectedRootTextBox.Text, this.selectedHash);
             this.selectRootButton.Enabled = false;
             this.startButton.Enabled = false;
+            this.simpleHashRadioButton.Enabled = false;
+            this.lazyHashRadioButton.Enabled = false;
+            this.fullHashRadioButton.Enabled = false;
             this.progressBar.Style = ProgressBarStyle.Marquee;
             this.timer.Start();
             new Thread(new ThreadStart(delegate()
@@ -70,6 +73,9 @@ namespace Southbound.FileSystemScanner
                 this.progressBar.Style = ProgressBarStyle.Blocks;
                 this.startButton.Enabled = true;
                 this.selectRootButton.Enabled = true;
+                this.simpleHashRadioButton.Enabled = true;
+                this.lazyHashRadioButton.Enabled = true;
+                this.fullHashRadioButton.Enabled = true;
 
                 int fileCount = this.scanner.getFileInformationItems().Count;
                 MessageBox.Show(string.Format("Scanned {0} file{1}", fileCount, (fileCount > 1 ? "s" : "")), "Done", MessageBoxButtons.OK);
