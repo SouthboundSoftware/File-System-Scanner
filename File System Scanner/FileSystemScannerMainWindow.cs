@@ -18,6 +18,7 @@ namespace Southbound.FileSystemScanner
         {
             InitializeComponent();
             this.lazyHashRadioButton.Checked = true;
+            this.statusLabel.Text = string.Empty;
         }
 
         private void selectRootButton_Click(object sender, EventArgs e)

@@ -40,6 +40,7 @@
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.statusLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // selectRootButton
@@ -119,7 +120,7 @@
             // 
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(13, 235);
+            this.progressBar.Location = new System.Drawing.Point(13, 197);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(467, 23);
             this.progressBar.TabIndex = 7;
@@ -133,11 +134,22 @@
             // 
             this.saveFileDialog.Filter = "CSV file|*.csv";
             // 
+            // statusLabel
+            // 
+            this.statusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Location = new System.Drawing.Point(13, 181);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(37, 13);
+            this.statusLabel.TabIndex = 8;
+            this.statusLabel.Text = "Status";
+            // 
             // FileSystemScannerMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 270);
+            this.ClientSize = new System.Drawing.Size(492, 232);
+            this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.fullHashRadioButton);
@@ -168,6 +180,7 @@
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.Label statusLabel;
     }
 }
 
