@@ -67,6 +67,8 @@ namespace Southbound.FileSystemScanner
             if (this.scanner.IsRunning)
             {
                 this.progressBar.Update();
+                int count = this.scanner.getFileInformationItems().Count;
+                this.statusLabel.Text = string.Format("Status: {0} file{1} scanned", count, count > 1 ? "s" : string.Empty); 
             }
             else
             {
