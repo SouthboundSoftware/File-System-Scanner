@@ -67,7 +67,7 @@ namespace Southbound.FileSystemScanner
             if (this.scanner.IsRunning)
             {
                 this.progressBar.Update();
-                int count = this.scanner.getFileInformationItems().Count;
+                int count = this.scanner.FileInformationItems.Count;
                 this.statusLabel.Text = string.Format("Status: {0} file{1} scanned", count, count > 1 ? "s" : string.Empty); 
             }
             else
@@ -80,7 +80,7 @@ namespace Southbound.FileSystemScanner
                 this.lazyHashRadioButton.Enabled = true;
                 this.fullHashRadioButton.Enabled = true;
 
-                int fileCount = this.scanner.getFileInformationItems().Count;
+                int fileCount = this.scanner.FileInformationItems.Count;
                 MessageBox.Show(string.Format("Scanned {0} file{1}", fileCount, (fileCount > 1 ? "s" : "")), "Done", MessageBoxButtons.OK);
 
                 this.saveResult();
@@ -91,7 +91,7 @@ namespace Southbound.FileSystemScanner
         {
             if (this.saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                FileInformationItem.Save(this.saveFileDialog.FileName, this.scanner.getFileInformationItems());
+                FileInformationItem.Save(this.saveFileDialog.FileName, this.scanner.FileInformationItems);
             }
         }
 

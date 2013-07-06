@@ -29,9 +29,12 @@ namespace Southbound.FileSystemScanner
 
         public bool IsRunning { get { return this.running; } }
 
-        public IList<FileInformationItem> getFileInformationItems()
+        public IList<FileInformationItem> FileInformationItems
         {
-            return this.items;
+            get
+            {
+                return this.items;
+            }
         }
 
         private void Scan(DirectoryInfo root)
