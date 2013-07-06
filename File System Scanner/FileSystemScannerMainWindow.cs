@@ -11,6 +11,8 @@ namespace Southbound.FileSystemScanner
 {
     public partial class FileSystemScannerMainWindow : Form
     {
+        private Thread scannerThread;
+        private Thread saveThread;
         private HashMethod selectedHash;
         private Scanner scanner;
         private bool isSaving;
@@ -21,6 +23,8 @@ namespace Southbound.FileSystemScanner
             this.lazyHashRadioButton.Checked = true;
             this.statusLabel.Text = string.Empty;
             this.isSaving = false;
+            this.scannerThread = null;
+            this.saveThread = null;
         }
 
         private void selectRootButton_Click(object sender, EventArgs e)
@@ -42,10 +46,11 @@ namespace Southbound.FileSystemScanner
             this.fullHashRadioButton.Enabled = false;
             this.progressBar.Style = ProgressBarStyle.Marquee;
             this.timer.Start();
-            new Thread(new ThreadStart(delegate()
+            this.scannerThread = new Thread(new ThreadStart(delegate()
             {
                 this.scanner.Start();
-            })).Start();
+            }));
+            this.scannerThread.Start();
         }
 
         private void hashMethodChanged(object sender, EventArgs e)
@@ -100,12 +105,19 @@ namespace Southbound.FileSystemScanner
             {
                 this.isSaving = true;
                 this.timer.Start();
-                new Thread(new ThreadStart(delegate()
+                this.saveThread = new Thread(new ThreadStart(delegate()
                 {
                     FileInformationItem.Save(this.saveFileDialog.FileName, this.scanner.FileInformationItems);
-                })).Start();
+                }));
+                this.saveThread.Start();
                 this.isSaving = false;
             }
+        }
+
+        private void FileSystemScannerMainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (null != this.scannerThread && this.scannerThread.IsAlive) this.scannerThread.Abort();
+            if (null != this.saveThread && this.saveThread.IsAlive) this.saveThread.Abort();
         }
 
     }

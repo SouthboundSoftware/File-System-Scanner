@@ -162,6 +162,7 @@
             this.Name = "FileSystemScannerMainWindow";
             this.ShowIcon = false;
             this.Text = "File System Scanner";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FileSystemScannerMainWindow_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
