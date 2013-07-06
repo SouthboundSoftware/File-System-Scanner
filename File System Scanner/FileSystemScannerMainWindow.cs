@@ -13,12 +13,14 @@ namespace Southbound.FileSystemScanner
     {
         private HashMethod selectedHash;
         private Scanner scanner;
+        private bool isSaving;
 
         public FileSystemScannerMainWindow()
         {
             InitializeComponent();
             this.lazyHashRadioButton.Checked = true;
             this.statusLabel.Text = string.Empty;
+            this.isSaving = false;
         }
 
         private void selectRootButton_Click(object sender, EventArgs e)
@@ -68,7 +70,12 @@ namespace Southbound.FileSystemScanner
             {
                 this.progressBar.Update();
                 int count = this.scanner.FileInformationItems.Count;
-                this.statusLabel.Text = string.Format("Status: {0} file{1} scanned", count, count > 1 ? "s" : string.Empty); 
+                this.statusLabel.Text = string.Format("Status: {0} file{1} scanned", count, count > 1 ? "s" : string.Empty);
+            }
+            else if (this.isSaving)
+            {
+                this.progressBar.Update();
+                this.statusLabel.Text = "Saving output...";
             }
             else
             {
@@ -91,7 +98,13 @@ namespace Southbound.FileSystemScanner
         {
             if (this.saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                FileInformationItem.Save(this.saveFileDialog.FileName, this.scanner.FileInformationItems);
+                this.isSaving = true;
+                this.timer.Start();
+                new Thread(new ThreadStart(delegate()
+                {
+                    FileInformationItem.Save(this.saveFileDialog.FileName, this.scanner.FileInformationItems);
+                })).Start();
+                this.isSaving = false;
             }
         }
 
