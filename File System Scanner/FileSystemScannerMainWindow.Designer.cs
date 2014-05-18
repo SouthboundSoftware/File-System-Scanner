@@ -1,4 +1,4 @@
-﻿namespace Southbound.FileSystemScanner
+﻿namespace MichaelBanzon.FileSystemScanner
 {
     partial class FileSystemScannerMainWindow
     {
@@ -41,6 +41,7 @@
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.statusLabel = new System.Windows.Forms.Label();
+            this.stopButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // selectRootButton
@@ -144,11 +145,23 @@
             this.statusLabel.TabIndex = 8;
             this.statusLabel.Text = "Status";
             // 
+            // stopButton
+            // 
+            this.stopButton.Enabled = false;
+            this.stopButton.Location = new System.Drawing.Point(328, 156);
+            this.stopButton.Name = "stopButton";
+            this.stopButton.Size = new System.Drawing.Size(152, 23);
+            this.stopButton.TabIndex = 9;
+            this.stopButton.Text = "Stop";
+            this.stopButton.UseVisualStyleBackColor = true;
+            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
+            // 
             // FileSystemScannerMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(492, 232);
+            this.Controls.Add(this.stopButton);
             this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.startButton);
@@ -182,6 +195,7 @@
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.Label statusLabel;
+        private System.Windows.Forms.Button stopButton;
     }
 }
 

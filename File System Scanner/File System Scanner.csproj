@@ -7,7 +7,7 @@
     <ProjectGuid>{557D2DD7-6C7B-4566-A71A-40A812D184BC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Southbound.FileSystemScanner</RootNamespace>
+    <RootNamespace>MichaelBanzon.FileSystemScanner</RootNamespace>
     <AssemblyName>File System Scanner</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

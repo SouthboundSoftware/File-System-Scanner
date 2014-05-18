@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace Southbound.FileSystemScanner
+namespace MichaelBanzon.FileSystemScanner
 {
     public partial class FileSystemScannerMainWindow : Form
     {
@@ -49,8 +49,13 @@ namespace Southbound.FileSystemScanner
             this.scannerThread = new Thread(new ThreadStart(delegate()
             {
                 this.scanner.Start();
+                this.stopButton.Invoke((MethodInvoker)delegate
+                {
+                    this.stopButton.Enabled = false;
+                });
             }));
             this.scannerThread.Start();
+            this.stopButton.Enabled = true;
         }
 
         private void hashMethodChanged(object sender, EventArgs e)
@@ -118,6 +123,14 @@ namespace Southbound.FileSystemScanner
         {
             if (null != this.scannerThread && this.scannerThread.IsAlive) this.scannerThread.Abort();
             if (null != this.saveThread && this.saveThread.IsAlive) this.saveThread.Abort();
+        }
+
+        private void stopButton_Click(object sender, EventArgs e)
+        {
+            if (this.scanner.IsRunning)
+            {
+                this.scanner.Stop();
+            }
         }
 
     }

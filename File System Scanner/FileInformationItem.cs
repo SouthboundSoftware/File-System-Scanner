@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Southbound.FileSystemScanner
+namespace MichaelBanzon.FileSystemScanner
 {
     class FileInformationItem
     {

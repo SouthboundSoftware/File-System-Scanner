@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Southbound.FileSystemScanner
+namespace MichaelBanzon.FileSystemScanner
 {
     class Scanner
     {
@@ -11,6 +11,7 @@ namespace Southbound.FileSystemScanner
         private DirectoryInfo root;
         private List<FileInformationItem> items;
         private bool running;
+        private bool shouldRun;
 
         public Scanner(string rootPath, HashMethod hashMethod)
         {
@@ -18,13 +19,20 @@ namespace Southbound.FileSystemScanner
             this.hashMethod = hashMethod;
             this.items = new List<FileInformationItem>();
             this.running = false;
+            this.shouldRun = false;
         }
 
         public void Start()
         {
+            this.shouldRun = true;
             this.running = true;
             this.Scan(this.root);
             this.running = false;
+        }
+
+        public void Stop()
+        {
+            this.shouldRun = false;
         }
 
         public bool IsRunning { get { return this.running; } }
@@ -51,6 +59,11 @@ namespace Southbound.FileSystemScanner
 
             foreach (FileInfo file in files)
             {
+                if (!this.shouldRun)
+                {
+                    return;
+                }
+
                 if ((file.Attributes & FileAttributes.ReparsePoint) != FileAttributes.ReparsePoint && (file.Attributes & FileAttributes.System) != FileAttributes.System)
                 {
                     FileInformationItem item = new FileInformationItem(file);
